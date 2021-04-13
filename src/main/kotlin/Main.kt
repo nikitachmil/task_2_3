@@ -1,45 +1,56 @@
+
 fun main() {
     val discount = 100 //скидка
-    val goldDiscount = 5 //скидка за статус
-    var status = false
+    var goldDiscount = 5 //скидка за статус
+    var status = true
 
-    var purchaseAmount = 100 //сумма покупки
+    var purchaseAmount = 1001 //сумма покупки
     var discountedAmount = 0
 
 
-    if (purchaseAmount > 0 && purchaseAmount < 1000) {
-        discountedAmount = purchaseAmount
-        println("сумма покупки ")
-        println(discountedAmount)
 
-    } else if (purchaseAmount > 1001 && purchaseAmount < 10000) {
-        var purchaseAmount = purchaseAmount - discount
-        discountedAmount = purchaseAmount
-        println("сумма покупки ")
-        println(discountedAmount)
 
-    } else if (purchaseAmount > 10001) {
-        var goldDiscount = purchaseAmount / 100 * goldDiscount
-        var purchaseAmount = purchaseAmount - goldDiscount
+    when (purchaseAmount) {
+        in 0..1000 -> println("Сумма покупки:  $purchaseAmount")
 
-        discountedAmount = purchaseAmount
-        println("сумма покупки ")
-        println(discountedAmount)
+        in 1001..10000 -> {
+            discountedAmount = purchaseAmount - discount
+
+            println("Сумма покупки:  $discountedAmount")
+
+        }
+
+        else -> {
+            goldDiscount = purchaseAmount / 100 * goldDiscount
+            discountedAmount = purchaseAmount - goldDiscount
+            println("Сумма покупки:  $discountedAmount")
+
+        }
     }
 
 
-    var totalSum = if (status == true) {
+
+
+
+
+
+    if (status) {
         var total = discountedAmount / 100 * 1
-        total = discountedAmount - total
+        discountedAmount = discountedAmount - total
         println("у вас есть статус меломана поэтому действует скидка 1%: ")
-        println(total)
+        println(discountedAmount)
 
     } else {
         println("у вас нет статуса меломана ")
     }
-
-
 }
+
+
+
+
+
+
+
 
 
 
